@@ -1,0 +1,24 @@
+note over browser:
+User submits form by clicking "save"
+end note
+
+note over browser:
+"onsubmit" listener collects new note data from form
+end note
+
+note over browser:
+DOM is updated with the new note
+end note
+
+note over browser:
+New note is converted to JSON
+end note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa \n body? application/json {content: "..." date: "..."}
+
+note over server:
+Body for note data is requested
+Notes are updated on server with new note
+end note
+
+server-->browser: HTTP 201 {"message":"note created"}
