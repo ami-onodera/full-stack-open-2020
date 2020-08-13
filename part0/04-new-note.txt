@@ -31,7 +31,7 @@ main.js requests for /data.json
 end note
 
 browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
-server-->browser: data.json \n [content: "..." date: "..."]
+server-->browser: data.json \n [content: "..." date: "..." ...]
 
 note over browser:
 event handler retrieves new notes and
