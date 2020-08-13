@@ -17,8 +17,8 @@ end note
 browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa \n body? application/json {content: "..." date: "..."}
 
 note over server:
-Body for note data is requested
-Notes are updated on server with new note
+Parse request body for note data
+update notes on the server with new notes
 end note
 
 server-->browser: HTTP 201 {"message":"note created"}
