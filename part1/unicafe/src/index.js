@@ -36,7 +36,7 @@ const Statistics = (props) => {
           <Statistic name="average" value={props.average} />
 
           <Statistic
-            name="positivePercentage"
+            name="Positive Percentage"
             value={props.positivePercentage + "%"}
           />
         </tbody>
