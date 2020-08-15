@@ -4,17 +4,6 @@ import "./index.css";
 
 const Title = (props) => <h1>{props.text}</h1>;
 
-const Button = (props) => <button onClick={props.onClick}>{props.text}</button>;
-
-const Statistic = (props) => {
-  return (
-    <tr>
-      <td>{props.name}</td>
-      <td>{props.value}</td>
-    </tr>
-  );
-};
-
 const Statistics = (props) => {
   if (!props.hasFeedback) {
     return <p>No feedback yet</p>;
@@ -31,19 +20,30 @@ const Statistics = (props) => {
 
           <Statistic name="bad" value={props.bad} />
 
-          <Statistic name="total" value={props.total} />
+          <Statistic name="all" value={props.all} />
 
           <Statistic name="average" value={props.average} />
 
           <Statistic
-            name="Positive Percentage"
-            value={props.positivePercentage + "%"}
+            name="Positive"
+            value={props.positive + "%"}
           />
         </tbody>
       </table>
     </div>
   );
 };
+
+const Statistic = (props) => {
+  return (
+    <tr>
+      <td>{props.name}</td>
+      <td>{props.value}</td>
+    </tr>
+  );
+};
+
+const Button = (props) => <button onClick={props.onClick}>{props.text}</button>;
 
 const App = () => {
   // save clicks of each button to own state
@@ -52,7 +52,7 @@ const App = () => {
   const [bad, setBad] = useState(0);
   const [hasFeedback, setHasFeedback] = useState(false);
 
-  const total = good + neutral + bad;
+  const all = good + neutral + bad;
 
   const getPercent = (x, totalAmount) => {
     let result = (x / totalAmount) * 100;
@@ -62,14 +62,14 @@ const App = () => {
     return Math.round(result * 1000) / 1000;
   };
 
-  const positivePercentage = getPercent(good, total);
+  const positive = getPercent(good, all);
 
-  const averageWeight = (weightsArr, total) => {
+  const averageWeight = (weightsArr, all) => {
     const weights = weightsArr.reduce((acc, item) => {
       return acc + item.number * item.weight;
     }, 0);
 
-    let result = weights / total;
+    let result = weights / all;
 
     if (Number.isNaN(result)) return 0;
 
@@ -82,7 +82,7 @@ const App = () => {
       { number: neutral, weight: 0 },
       { number: bad, weight: -1 },
     ],
-    total
+    all
   );
 
   const handleClick = (type) => {
@@ -103,14 +103,14 @@ const App = () => {
     }
   };
 
-  const statisticsProps = {
+  const statistics = {
     hasFeedback: hasFeedback,
     good: good,
     neutral: neutral,
     bad: bad,
-    total: total,
+    all: all,
     average: average,
-    positivePercentage: positivePercentage,
+    positive: positive,
   };
 
   return (
@@ -119,7 +119,7 @@ const App = () => {
       <Button text="good" onClick={() => handleClick("good")} />
       <Button text="neutral" onClick={() => handleClick("neutral")} />
       <Button text="bad" onClick={() => handleClick("bad")} />
-      <Statistics {...statisticsProps} />
+      <Statistics {...statistics} />
     </div>
   );
 };
