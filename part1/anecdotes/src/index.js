@@ -37,7 +37,7 @@ const App = (props) => {
     return Math.floor(Math.random() * length);
   };
 
-  const newRandomAnecdote = () => {
+  const randomNewAnecdote = () => {
     let randomAnecdoteId;
 
     do {
@@ -57,7 +57,7 @@ const App = (props) => {
   const handleClick = (type) => {
     switch (type) {
       case "next":
-        newRandomAnecdote();
+        randomNewAnecdote();
         break;
       case "vote":
         handleVote();
@@ -68,18 +68,18 @@ const App = (props) => {
   };
 
   const maxVote = votes.reduce(
-    (acc, num, idx) => {
-      if (num > acc.num) {
-        acc.num = num;
-        acc.idx = idx;
+    (count, num, idAnecdote) => {
+      if (num > count.num) {
+        count.num = num;
+        count.idAnecdote = idAnecdote;
       }
 
-      return acc;
+      return count;
     },
     { num: 0 }
   );
 
-  const mostVoted = anecdotes[maxVote.idx];
+  const anecdoteMostVoted = anecdotes[maxVote.idAnecdote];
 
   return (
     <div>
@@ -90,7 +90,7 @@ const App = (props) => {
       <Button onClick={() => handleClick("next")} text="next anecdote" />
       <MostVotes
         hasVotes={hasVotes}
-        anecdote={mostVoted}
+        anecdote={anecdoteMostVoted}
         votes={maxVote.num}
       />
     </div>
