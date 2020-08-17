@@ -3,7 +3,7 @@ These are the excercizes proposed by the program [Full Stack Open](https://fulls
 
 ## Dates
 **My start date:** 11 August 2020 <br>
-**Current Status:** Part 2 in Progress
+**Current Status:** Part 2 in Progress <br>
 **My end date:** <br>
 **Program Deadline:** 10 January 2021 <br>
 
