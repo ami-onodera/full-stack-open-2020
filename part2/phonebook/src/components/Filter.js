@@ -1,20 +1,16 @@
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
 
-const Filter = (props) => {
-  return (
-    <div className="c-filter">
-      <h3 className="c-filter__heading">Search Contacts</h3>
-      <div className="c-form-row">
-        <input
-          id="filter"
-          className="c-form-row__input"
-          onChange={props.handleFilterChange}
-          value={props.value}
-          placeholder="Enter name..."
-        />
-      </div>
-    </div>
-  );
+const Filter = ({ handleFilterInput, handleFilterInputChange }) => (
+  <div>
+    Apply filter to shown numbers:{' '}
+    <input value={handleFilterInput} onChange={handleFilterInputChange} />
+  </div>
+);
+
+Filter.propTypes = {
+  handleFilterInput: PropTypes.string.isRequired,
+  handleFilterInputChange: PropTypes.func.isRequired
 };
 
 export default Filter;

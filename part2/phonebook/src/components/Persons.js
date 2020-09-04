@@ -1,48 +1,29 @@
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
+import Person from './Person';
 
-const Person = (props) => {
+const Persons = ({ persons, filter, handleDeletePersonButton }) => {
+  const filteredPersons = persons.filter((person) =>
+    person.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
-    <div className="c-person">
-      <span className="c-person__detail">
-        <span className="u-bold">{props.name}:</span>
-      </span>
-      <span className="c-person__detail">
-        <span className="u-italic">{props.number}, </span>
-      </span>
-      <div className="c-person__delete">
-        <div className="c-person__delete-btn">
-          <button
-            className="c-btn c-btn--danger"
-            data-id={props.id}
-            onClick={props.handleClick}
-          >
-            Delete
-          </button>
-        </div>
-      </div>
+    <div>
+      {filteredPersons.map((person) => (
+        <Person
+          key={person.id}
+          person={person}
+          handleDeletePersonButton={handleDeletePersonButton}
+        />
+      ))}
     </div>
   );
 };
 
-const Persons = ({ persons, handleClick }) => {
-  const personsList = persons.map((person) => {
-    return (
-      <Person
-        key={person.id}
-        id={person.id}
-        name={person.name}
-        number={person.number}
-        handleClick={handleClick}
-      />
-    );
-  });
-
-  return (
-    <div className="c-persons">
-      <h3 className="c-persons__heading">Contact List</h3>
-      {personsList}
-    </div>
-  );
+Persons.propTypes = {
+  filter: PropTypes.string.isRequired,
+  persons: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleDeletePersonButton: PropTypes.func.isRequired
 };
 
 export default Persons;
