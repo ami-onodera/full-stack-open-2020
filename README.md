@@ -10,6 +10,13 @@ These are the excercizes proposed by the program [Full Stack Open](https://fulls
 ## Mentorship
 I am taking part on the **etki_JS** cohort Remote Code Camp for this project, which is organized by etki Tech Network community together with **ThoughtWorks** and **University of Helsinki**.
 
+## Completed Parts
+Part 0 - Fundamentals of Web apps
+Part 1 - Introduction to React
+Part 2 - Communicating with server
+Part 3 - Programming a server with NodeJS and Express
+
+
 ## Certificate
 <img src="https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/afd42f2be8e80c3d02edb4b1857a9fcf"></img>
 
